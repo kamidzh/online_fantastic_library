@@ -69,7 +69,7 @@ def main():
         description='Проект создан для скачивания книг с сайта tululu.org'
     )
     parser.add_argument('--start_page', help='start_page', default=1, type=int)
-    parser.add_argument('--end_page', help='end_page', default=702, type=int)
+    parser.add_argument('--end_page', help='end_page', default=701, type=int)
     parser.add_argument('--skip_imgs', help='skip images', action='store_true')
     parser.add_argument('--skip_txt', help='skip txt', action='store_true')
     parser.add_argument('--dest_folder', help='dest_folder', default='results')
@@ -103,6 +103,7 @@ def main():
         except ConnectionError:
             print('Попытка подключения к серверу')
             sleep(20)
+    pathlib.Path(args.dest_folder).mkdir(parents=True, exist_ok=True)
     with open(f"{args.dest_folder}/parameters.json", "w", encoding='utf8') as file:
         json.dump(all_parameters, file, ensure_ascii=False)
 
