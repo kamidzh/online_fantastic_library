@@ -52,8 +52,8 @@ def parse_book_page(soup, url):
 
 def get_category_books_url(start_page, end_page):
     book_links = []
-    for i in range(start_page, end_page):
-        url = f'https://tululu.org/l55/{i}'
+    for page in range(start_page, end_page):
+        url = f'https://tululu.org/l55/{page}'
         response = requests.get(url)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'lxml')
