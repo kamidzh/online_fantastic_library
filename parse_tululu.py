@@ -60,7 +60,7 @@ def get_category_books_url(start_page, end_page):
         soup = BeautifulSoup(response.text, 'lxml')
         books = soup.select('table.d_book')
         for book in books:
-            book_url = urljoin('https://tululu.org/', book.select_one('a')['href'])
+            book_url = urljoin(url, book.select_one('a')['href'])
             book_links.append(book_url)
     return book_links
 
