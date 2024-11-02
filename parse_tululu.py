@@ -102,7 +102,7 @@ def main():
                 download_txt(download_response, book_title, book_folder)
         except requests.exceptions.HTTPError:
             print('такой книги нет')
-        except ConnectionError:
+        except requests.exceptions.ConnectionError:
             print('Попытка подключения к серверу')
             sleep(20)
     pathlib.Path(args.dest_folder).mkdir(parents=True, exist_ok=True)
