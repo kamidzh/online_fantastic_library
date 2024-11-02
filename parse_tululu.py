@@ -78,7 +78,6 @@ def main():
     all_parameters = []
     for url in get_category_books_url(args.start_page, args.end_page):
         try:
-            print(url)
             response = requests.get(url)
             response.raise_for_status()
             check_for_redirect(response)
