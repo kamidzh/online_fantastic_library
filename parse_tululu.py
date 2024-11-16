@@ -53,15 +53,21 @@ def parse_book_page(soup, url):
 def get_category_books_url(start_page, end_page):
     book_links = []
     for page in range(start_page, end_page):
-        url = f'https://tululu.org/l55/{page}'
-        response = requests.get(url)
-        response.raise_for_status()
-        check_for_redirect(response)
-        soup = BeautifulSoup(response.text, 'lxml')
-        books = soup.select('table.d_book')
-        for book in books:
-            book_url = urljoin(url, book.select_one('a')['href'])
-            book_links.append(book_url)
+        try:
+            url = f'https://tululu.org/l55/{page}'
+            response = requests.get(url)
+            response.raise_for_status()
+            check_for_redirect(response)
+            soup = BeautifulSoup(response.text, 'lxml')
+            books = soup.select('table.d_book')
+            for book in books:
+                book_url = urljoin(url, book.select_one('a')['href'])
+                book_links.append(book_url)
+        except requests.exceptions.HTTPError:
+            print('такой книги нет')
+        except requests.exceptions.ConnectionError:
+            print('Попытка подключения к серверу')
+            sleep(20)
     return book_links
 
 
