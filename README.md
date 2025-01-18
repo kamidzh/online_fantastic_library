@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 ## Запуск
 
-Для запуска скрипта используйте следующую команду в консоли:
+Для запуска скрипта парсера используйте следующую команду в консоли:
 
 ```
 python parse_tululu.py
@@ -35,12 +35,22 @@ python parse_tululu.py
 
 `--skip_txt` — не скачивать книги
 
-Примеры запуска скрипта:
+Пример:
 
 ```
-$ python parse_tululu.py --start_page 700 --end_page 701 --dest_folder folder_name --skip_imgs --skip_txt
+python parse_tululu.py --start_page 700 --end_page 701 --dest_folder folder_name --skip_imgs --skip_txt
 
 ```
+
+## Генерация html страниц для сайта с книгами
+
+По скачанным данным можно сформировать сайт скриптом `render_website.py`. Страницы сайта генерируются в папке `pages`.
+
+```
+python render_website.py
+```
+
+Сайт опубликован по адресу https://kamidzh.github.io/online_fantastic_library/pages/index1.html.
 
 ## Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
