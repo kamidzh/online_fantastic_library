@@ -11,7 +11,7 @@ def get_arguments():
     parser = argparse.ArgumentParser(
         description='Проект создан для скачивания книг с сайта tululu.org'
     )
-    parser.add_argument('--dest_folder', help='dest_folder', default='results')
+    parser.add_argument('--dest_folder', help='dest_folder', default='media')
     args = parser.parse_args()
     return args
 
@@ -24,7 +24,7 @@ def rebuild():
 
     template = env.get_template('template.html')
 
-    with open(f"{args.dest_folder}/parameters.json", "r", encoding='utf-8') as my_file:
+    with open("parameters.json", "r", encoding='utf-8') as my_file:
         file_contents = my_file.read()
     os.makedirs('pages', exist_ok=True)
     books_parameters = json.loads(file_contents)
