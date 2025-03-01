@@ -32,15 +32,15 @@ def rebuild():
     books_in_page = 10
     book_groups = list(chunked(books_parameters, books_in_page))
     pages_amount = len(book_groups)
-    for num, book_group in enumerate(book_groups):
+    for num, book_group in enumerate(book_groups, start=1):
         rendered_page = template.render(
             books = book_group,
             books_folder = f'{args.dest_folder}/books',
             images_folder = f'{args.dest_folder}/images',
             pages_amount = pages_amount,
-            my_page = num + 1
+            my_page = num
         )
-        with open(f'pages/index{num + 1}.html', 'w', encoding="utf8") as file:
+        with open(f'pages/index{num}.html', 'w', encoding='utf8') as file:
             file.write(rendered_page)
     server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
     print('Site rebuilt')
