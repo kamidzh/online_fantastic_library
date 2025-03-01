@@ -43,7 +43,6 @@ def rebuild():
         with open(f'pages/index{num}.html', 'w', encoding='utf8') as file:
             file.write(rendered_page)
     server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
-    print('Site rebuilt')
 
 
 if __name__ == '__main__':
