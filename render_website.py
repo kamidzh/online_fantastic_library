@@ -29,8 +29,8 @@ def rebuild():
     with open(args.parameters_file, 'r', encoding='utf-8') as my_file:
         books_parameters = json.load(my_file)
     os.makedirs('pages', exist_ok=True)
-    books_parameters = json.loads(file_contents)
-    book_groups = list(chunked(books_parameters, 10))
+    books_in_page = 10
+    book_groups = list(chunked(books_parameters, books_in_page))
     pages_amount = len(book_groups)
     for num, book_group in enumerate(book_groups):
         rendered_page = template.render(
