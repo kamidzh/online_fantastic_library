@@ -1,10 +1,11 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+import argparse
 import json
+import os
+
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server
-import argparse
 from more_itertools import chunked
-import os
 
 
 def get_arguments():
