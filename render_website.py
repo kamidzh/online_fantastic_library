@@ -13,6 +13,7 @@ def get_arguments():
         description='Проект создан для скачивания книг с сайта tululu.org'
     )
     parser.add_argument('--dest_folder', help='dest_folder', default='media')
+    parser.add_argument('--parameters_file', help='parameters_file', default='parameters.json')
     args = parser.parse_args()
     return args
 
@@ -27,6 +28,7 @@ def rebuild():
 
     with open("parameters.json", "r", encoding='utf-8') as my_file:
         file_contents = my_file.read()
+    with open(args.parameters_file, 'r', encoding='utf-8') as my_file:
     os.makedirs('pages', exist_ok=True)
     books_parameters = json.loads(file_contents)
     book_groups = list(chunked(books_parameters, 10))
